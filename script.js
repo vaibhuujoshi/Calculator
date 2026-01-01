@@ -1,73 +1,42 @@
-function add(num1, num2) {
-    return num1 + num2;
-}
+const initialValueOfDisplay = 0;
 
-function subtract(num1, num2) {
-    return num1 - num2;
-}
+const display = document.querySelector(".display");
+display.value = initialValueOfDisplay;
 
-function multiply(num1, num2) {
-    return num1 * num2;
-}
+let operationsToDo = "";
 
-function divide(num1, num2) {
-    return num1 / num2;
-}
+const btnsContainer = document.querySelectorAll(".button-row");
 
-function CalculateOperation(oprt, num1, num2) {
-    if (oprt === "+") {
-        return add(num1, num2)
-    } else if (oprt === "-") {
-        return subtract(num1, num2)
-    } else if (oprt === "*") {
-        return multiply(num1, num2)
-    } else if (oprt === "/") {
-        return divide(num1, num2)
-    }
-}
+btnsContainer.forEach((row) => {
+    row.addEventListener("click", (event) => {
+        if (event.target.tagName !== "BUTTON") return;
 
-let allowedOperators = ["+", "-", "*", "/"]
+        const value = event.target.textContent;
+        if (value === "clr") {
+            display.value = initialValueOfDisplay;
+            operationsToDo = "";
+            return;
+        }
 
-let allowedValue = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/"]
+        if (value === "del") {
+            operationsToDo = operationsToDo.slice(0, -1);
+            display.value = operationsToDo || initialValueOfDisplay;
+            return;
+        }
 
-let btns = document.querySelectorAll("button");
-
-const display = document.querySelector("#display");
-
-btns.forEach((btn) => {
-    if (allowedValue.includes(btn.textContent)) {
-        btn.addEventListener("click", () => display.textContent += btn.textContent)
-    }
-
-    else if (btn.textContent === "clr") {
-        btn.addEventListener("click", () => display.textContent = "")
-
-    }
-
-    else if (btn.textContent === "=") {
-        btn.addEventListener("click", () => {
-            let operationData = display.textContent
-            let splitedOperation = operationData.split("");
-
-            let operator = [];
-
-            for (let i of splitedOperation) {
-                if (allowedOperators.includes(i)) {
-                    operator.push(i)
-                }
+        if (value === "=") {
+            try {
+                display.value = eval(operationsToDo);
+                operationsToDo = display.value.toString();
+            } catch {
+                display.value = "0";
+                operationsToDo = "";
             }
+            return;
+        }
 
-            let operationValues = operationData.split(operator[0]);
+        operationsToDo += value;
+        display.value = operationsToDo;
 
-            let oprt = operator[0];
-
-            let num1 = parseInt(operationValues[0]);
-            let num2 = parseInt(operationValues[1]);
-
-            let result = CalculateOperation(oprt, num1, num2);
-
-            display.textContent = result;
-
-        })
-    }
-})
+    });
+});
