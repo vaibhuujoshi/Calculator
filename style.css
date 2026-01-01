@@ -27,29 +27,23 @@ body {
     width: 100%;
     margin-bottom: 25px;
     border-radius: 12px;
-    padding: 0 15px; /* Side padding for the text */
-    
+    padding: 0 15px;
+    /* Side padding for the text */
+    font-size: 1.5rem;
+    border: none;
     /* Neumorphic Sunken Effect */
-    box-shadow: inset 5px 5px 10px #bec3c9, 
-                inset -5px -5px 10px #ffffff;
-    
+    box-shadow: inset 5px 5px 10px #bec3c9,
+        inset -5px -5px 10px #ffffff;
+    text-align: end;
     /* Scroll Logic: Essential for handling long numbers */
-    display: block;        /* Changed from flex to block to allow scrolling */
-    overflow-x: auto;      /* Enable horizontal scroll */
-    overflow-y: hidden;    /* Hide vertical scroll */
+    display: block;
+    /* Changed from flex to block to allow scrolling */
+    /* Enable horizontal scroll */
+    overflow: hidden;
+    /* Hide vertical scroll */
     scroll-behavior: smooth;
-    white-space: nowrap;   /* Force text to stay on one line */
-}
-
-#display {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.8rem;
-    color: #3d444d;
-    
-    display: block;        /* Fill the container width */
-    text-align: right;     /* Keep numbers on the right side */
-    min-width: 100%;       /* Force it to at least match container width */
-    line-height: 80px;     /* Vertically centers the text (match container height) */
+    white-space: nowrap;
+    /* Force text to stay on one line */
 }
 
 .display::-webkit-scrollbar {
@@ -62,7 +56,8 @@ body {
 }
 
 .display::-webkit-scrollbar-thumb {
-    background: transparent; /* Invisible by default */
+    background: transparent;
+    /* Invisible by default */
     border-radius: 10px;
     transition: background 0.3s ease;
 }
@@ -70,7 +65,7 @@ body {
 
 /* Show the scrollbar thumb only when hovering over the display box */
 .display:hover::-webkit-scrollbar-thumb {
-    background: #bec3c9; 
+    background: #bec3c9;
     box-shadow: inset 1px 1px 2px #ffffff;
 }
 
@@ -109,8 +104,8 @@ button {
 
 /* Button Press Effect */
 button:active {
-    box-shadow: inset 4px 4px 8px #bec3c9, 
-                inset -4px -4px 8px #ffffff;
+    box-shadow: inset 4px 4px 8px #bec3c9,
+        inset -4px -4px 8px #ffffff;
     transform: scale(0.98);
 }
 
@@ -122,7 +117,8 @@ button:hover {
     color: rgb(0, 0, 0);
 }
 
-#decimal, #del {
+#decimal,
+#del {
     width: 48%;
     border-radius: 15px;
 }
@@ -148,4 +144,13 @@ button:disabled {
     text-transform: uppercase;
     /* This makes it look engraved */
     text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #bec3c9;
+}
+
+.author-section {
+    text-align: center;
+    font-family: monospace;
+    font-weight: lighter;
+    font-size: large;
+    color: #575656;
+    text-decoration: underline;
 }
