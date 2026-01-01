@@ -49,18 +49,20 @@ btns.forEach((btn) => {
             let operationData = display.textContent
             let splitedOperation = operationData.split("");
 
-            let operator;
+            let operator = [];
 
             for (let i of splitedOperation) {
                 if (allowedOperators.includes(i)) {
-                    operator = i
+                    operator.push(i)
                 }
             }
+            alert(operator);
 
-            let operationValues = operationData.split(operator);
+            let operationValues = operationData.split(operator[0]);
 
-            let oprt = operator;
-            // alert(oprt)
+            let oprt = operator[0];
+            alert(operationValues[1]);
+
             let num1 = parseInt(operationValues[0]);
             let num2 = parseInt(operationValues[1]);
 
