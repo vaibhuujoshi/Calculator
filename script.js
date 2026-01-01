@@ -56,12 +56,10 @@ btns.forEach((btn) => {
                     operator.push(i)
                 }
             }
-            alert(operator);
 
             let operationValues = operationData.split(operator[0]);
 
             let oprt = operator[0];
-            alert(operationValues[1]);
 
             let num1 = parseInt(operationValues[0]);
             let num2 = parseInt(operationValues[1]);
